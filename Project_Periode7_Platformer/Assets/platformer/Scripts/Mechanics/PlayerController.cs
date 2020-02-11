@@ -5,6 +5,7 @@ using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
 using Platformer.Core;
+using XboxCtrlrInput;
 
 namespace Platformer.Mechanics
 {
@@ -14,6 +15,11 @@ namespace Platformer.Mechanics
     /// </summary>
     public class PlayerController : KinematicObject
     {
+        public XboxController controller;
+        public float maxMoveSpeed;
+        private Vector2 newPosition;
+
+
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
@@ -130,6 +136,16 @@ namespace Platformer.Mechanics
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
             targetVelocity = move * maxSpeed;
+        }
+        public void Move()
+        {
+            newPosition = transform.position;
+            float axisX = XCI.GetAxis(XboxAxis.LeftStickX, controller);
+            float axisY = XCI.GetAxis(XboxAxis.LeftStickY, controller);
+            float newPosX = newPosition.x + (axisX * maxMoveSpeed * Time.deltaTime);
+            float newPosY = newPosition.y + (axisY * maxMoveSpeed * Time.deltaTime);
+            newPosition = new Vector2(newPosX, newPosY);
+            transform.position = newPosition;
         }
 
         public enum JumpState
