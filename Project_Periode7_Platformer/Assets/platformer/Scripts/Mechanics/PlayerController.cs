@@ -55,6 +55,7 @@ namespace Platformer.Mechanics
 
         protected override void Update()
         {
+
             if (controlEnabled)
             {
                 move.x = Input.GetAxis("Horizontal");
