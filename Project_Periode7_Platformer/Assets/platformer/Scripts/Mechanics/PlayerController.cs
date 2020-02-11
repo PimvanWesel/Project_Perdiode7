@@ -19,7 +19,6 @@ namespace Platformer.Mechanics
         public float maxMoveSpeed;
         private Vector2 newPosition;
 
-
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
@@ -50,6 +49,18 @@ namespace Platformer.Mechanics
 
         public Bounds Bounds => collider2d.bounds;
 
+        //Wall jump variabelen
+        public Vector2 wallHopDirection;
+        public Vector2 wallJumpDirection;
+
+        public float wallHopForce;
+        public float wallJumpForce;
+
+        private int facingDirection = 1;
+
+        private bool isWalSliding;
+        private bool isFacingRight = true;
+
         void Awake()
         {
             health = GetComponent<Health>();
@@ -57,6 +68,12 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             //spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+        }
+
+        private void Start()
+        {
+            wallHopDirection.Normalize();
+            wallJumpDirection.Normalize();
         }
 
         protected override void Update()
@@ -155,6 +172,16 @@ namespace Platformer.Mechanics
             Jumping,
             InFlight,
             Landed
+        }
+
+        void Flip()
+        {
+            if (!isWalSliding)
+            {
+
+                isFacingRight = !isFacingRight;
+                transform.Rotate(0f, 180f, 0f);
+            }
         }
     }
 }
