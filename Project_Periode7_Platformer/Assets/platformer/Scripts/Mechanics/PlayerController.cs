@@ -178,10 +178,15 @@ namespace Platformer.Mechanics
         {
             if (!isWalSliding)
             {
-
+                facingDirection *= -1;
                 isFacingRight = !isFacingRight;
                 transform.Rotate(0f, 180f, 0f);
             }
+        }
+
+        void WallSlip()
+        {
+
         }
     }
 }
