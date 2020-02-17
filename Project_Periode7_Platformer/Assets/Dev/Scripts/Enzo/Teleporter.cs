@@ -22,7 +22,7 @@ public class Teleporter : MonoBehaviour
     {
         if (collider.gameObject.name == "Player" && disableTimer <= 0)
         {
-            foreach(Teleporter tp in FindObjectOfType<Teleporter>())
+            foreach(Teleporter tp in FindObjectsOfType<Teleporter>())
             {
                 if(tp.code==code && tp != this)
                 {
