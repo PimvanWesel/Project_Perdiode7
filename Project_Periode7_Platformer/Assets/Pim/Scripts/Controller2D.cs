@@ -28,6 +28,7 @@ public class Controller2D : MonoBehaviour
         for (int i = 0; i < verticalRayCount; i++)
         {
             Debug.DrawRay(raycastOrigins.bottomLeft + Vector2.right * verticalRaySpacing * i, Vector2.up * -2, Color.red);
+            Debug.Log(verticalRaySpacing);
         }
     }
 
@@ -51,6 +52,7 @@ public class Controller2D : MonoBehaviour
         verticalRayCount = Mathf.Clamp(verticalRayCount, 2, int.MaxValue);
 
         horizontalRaySpacing = bounds.size.y / (horizontalRayCount - 1);
+        verticalRaySpacing = bounds.size.x / (horizontalRayCount - 1);
     }
 
     struct RaycastOrigins
