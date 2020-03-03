@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Project_Periode7_Platformer/Assets/Art/Shaders.meta
 <<<<<<< HEAD
 guid: 61dc9ad7db43b6e41899901d1ae7204d
 =======
 guid: 77e0be15b7528b84eb666a0c2c47e9d8
 >>>>>>> master
+=======
+guid: 50a6fadeea82e444389424fd3530da76
+>>>>>>> parent of f1e32b8... idk:Project_Periode7_Platformer/Assets/Enzo.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
