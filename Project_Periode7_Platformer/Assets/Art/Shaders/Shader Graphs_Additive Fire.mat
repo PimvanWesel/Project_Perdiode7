@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Additive Shader
+  m_Name: Shader Graphs_Additive Fire
   m_Shader: {fileID: -6465566751694194690, guid: bf2f742020cdac147a36ae6968b04de9,
     type: 3}
   m_ShaderKeywords: 
@@ -21,9 +21,9 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_671748E:
-        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 2800000, guid: 74d07fc1ed19bd346b30d42f3f35ef47, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_92B8F2DB: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
+    - Color_92B8F2DB: {r: 5.278032, g: 5.278032, b: 5.278032, a: 1}
