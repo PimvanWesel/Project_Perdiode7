@@ -25,6 +25,7 @@ public class Controller2D : MonoBehaviour
     {
         collider = GetComponent<BoxCollider2D>();
         CalculateRaySpacing();
+        collisions.faceDirection = 1;
     }
 
     public void Move(Vector3 velocity)
@@ -33,14 +34,18 @@ public class Controller2D : MonoBehaviour
         collisions.Reset();
         collisions.velocityOld = velocity;
 
+        if (velocity.x != 0)
+        {
+            collisions.faceDirection = (int)Mathf.Sign(velocity.x);
+        }
+
         if (velocity.y < 0)
         {
             DecendSlope(ref velocity);
         }
-        if (velocity.x != 0)
-        {
-            HorizontalCollisions(ref velocity);
-        }
+
+        HorizontalCollisions(ref velocity);
+        
         if (velocity.y != 0)
         {
             VerticalCollisions(ref velocity);
@@ -51,8 +56,13 @@ public class Controller2D : MonoBehaviour
 
     void HorizontalCollisions(ref Vector3 velocity)
     {
-        float directionX = Mathf.Sign(velocity.x);
+        float directionX = collisions.faceDirection;
         float rayLength = Mathf.Abs(velocity.x) + skinWidth;
+
+        if (Mathf.Abs(velocity.x) < skinWidth)
+        {
+            rayLength = 2 * skinWidth;
+        }
 
         for (int i = 0; i < horizontalRayCount; i++)
         {
@@ -230,6 +240,7 @@ public class Controller2D : MonoBehaviour
         public bool decendingSlope;
         public float slopeAngle, slopeAngleOld;
         public Vector3 velocityOld;
+        public int faceDirection;
 
         public void Reset()
         {
